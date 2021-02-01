@@ -29,7 +29,7 @@
 		offsetY = canvas.offsetTop;
 		INPUT_TYPE = null;
 		wrongOrientation = false;
-		filesToLoad = 47;
+		filesToLoad = 52;
 		filesLoaded = 0;
 		GAME_STATE = "loading";
 		gameLoaded = false;
@@ -165,15 +165,15 @@
 		showEndResources = false;
 
 		endURLs = [
-			["mindyourmind.ca","http://mindyourmind.ca",halfWidth,30],
-			["سبب الحياة - خط منع الانتحار والدعم في مانيتوبا","http://reasontolive.ca/",halfWidth,76],
-			["NorWest Co-op Community Health","https://norwestcoop.ca/",halfWidth,143],
-			["مركز أورورا للعلاج الأسري","http://www.aurorafamilytherapy.com/newcomer.html",halfWidth,197],
-			["خدمات شباب ماكدونالد","https://www.mys.ca/services/youth-crisis-services",halfWidth,251],
-			["منظمة مجتمع المهاجرين واللاجئين في مانيتوبا (IRCOM)","https://www.ircom.ca/",halfWidth,297],
-			["New Journey Housing","https://www.newjourneyhousing.com/",halfWidth,364],
-			["Klinic Community Health","http://klinic.mb.ca/",halfWidth,412],
-			["خط مساعدة الأطفال","https://kidshelpphone.ca/",halfWidth,456],
+			["mindyourmind.ca","http://mindyourmind.ca",halfWidth,73],
+			["سبب الحياة - خط منع الانتحار والدعم في مانيتوبا","http://reasontolive.ca/",halfWidth,109],
+			["NorWest Co-op Community Health","https://norwestcoop.ca/",halfWidth,177],
+			["مركز أورورا للعلاج الأسري","http://www.aurorafamilytherapy.com/newcomer.html",halfWidth,220],
+			["خدمات شباب ماكدونالد","https://www.mys.ca/services/youth-crisis-services",halfWidth,265],
+			["منظمة مجتمع المهاجرين واللاجئين في مانيتوبا (IRCOM)","https://www.ircom.ca/",halfWidth,304],
+			["New Journey Housing","https://www.newjourneyhousing.com/",halfWidth,370],
+			["Klinic Community Health","http://klinic.mb.ca/",halfWidth,414],
+			["خط مساعدة الأطفال","https://kidshelpphone.ca/",halfWidth,458],
 		]		
 	}//End of init
 
@@ -240,6 +240,8 @@
 		correctText = new Image();
 		sorryText = new Image();
 		playAgainBtn = new Image();
+		resourceBtn = new Image();
+		resourceHdr = new Image();
 
 		//----------     ADD LISTENERS     ----------
 		cscLogo.onload = updateLoading();
@@ -292,7 +294,8 @@
 		correctText.onload = updateLoading();
 		sorryText.onload = updateLoading();
 		playAgainBtn.onload = updateLoading();
-
+		resourceBtn.onload = updateLoading();
+		resourceHdr.onload = updateLoading();
 		//----------     SET SOURCES    ----------
 		cscLogo.src = "images/csc_logo.png";
 		youthExpertsLogo.src = "images/youthexperts_logo.png";
@@ -343,6 +346,8 @@
 		correctText.src = "images/correct_text.png";
 		sorryText.src = "images/sorry_text.png";
 		playAgainBtn.src = "images/play_again_btn.png";
+		resourceBtn.src = "images/resource_btn.png";
+		resourceHdr.src = "images/resource_hdr.png";
 	}//End of loadAssets
 
 	//************************************
@@ -386,7 +391,6 @@
 			that.text = URLtext;
 			that.link = URLhyperlink;
 
-			c.font = "23px Arial, sans-serif";
 			that.textWidth = Math.floor(c.measureText(that.text).width);
 			that.width =  that.textWidth + 40;
 
@@ -403,7 +407,7 @@
 
 
 				//draw text
-				c.font = "23px Arial, sans-serif";
+				c.font = "20px Arial, sans-serif";
 				c.fillStyle = "#0f6ce6";
 				c.textAlign = "center";
 				wrapText(c,that.text,that.x,that.textY,382,23)
@@ -968,22 +972,15 @@
 				endScreenText,
 				halfWidth,58,387,19);	
 
-			c.fillStyle = "#FFF";
-			c.fillRect(86,204,245,73);
-
-			c.fillStyle = "#003399";
-			c.font = "25px arial, sans-serif";
-			wrapText(c,
-				"Tap here for links to more resources",
-				halfWidth,236,265,26);
-
 
 			c.drawImage(youthExpertsLogo,19,487);
 			c.drawImage(federalLogo,173,502);
 			c.drawImage(cscLogo,269,495);
 			c.drawImage(ymcaLogo,354,486);
 
-			activeTitlePopups[0].update();
+			activeTitlePopups.forEach(function(titlePopUp,index){
+				titlePopUp.update();
+			});
 
 			if(showEndResources === true){
 
@@ -994,6 +991,7 @@
 				c.restore();
 
 				c.drawImage(questionBG,1,7);
+				c.drawImage(resourceHdr,138,34);
 				c.drawImage(okButton,320,488);
 
 				activeURLButtons.forEach(function(urlButtonObject,index){
@@ -1158,7 +1156,8 @@
 							showAnswerButtons = false;
 							setupEndURLs();
 							activeFadeObjects[0] = new screenFade(1,0,backgroundColor);
-							activeTitlePopups[0] = new titlePopUp(playAgainBtn,209,384);
+							activeTitlePopups[0] = new titlePopUp(resourceBtn,209,250);
+							activeTitlePopups[1] = new titlePopUp(playAgainBtn,209,384);
 							GAME_STATE = "end_screen";
 						},850);
 					}
@@ -1285,7 +1284,8 @@
 				if(modelX > 347 && modelX < 416){//953,711
 					if(modelY > 497){
 						setupEndURLs();
-						activeTitlePopups[0] = new titlePopUp(playAgainBtn,209,384);
+						activeTitlePopups[0] = new titlePopUp(resourceBtn,209,250);
+						activeTitlePopups[1] = new titlePopUp(playAgainBtn,209,384);
 						activeFadeObjects[0] = new screenFade(1,0,backgroundColor);
 						GAME_STATE = "end_screen";
 					}
@@ -1408,8 +1408,8 @@
 					}
 
 					//More resources button
-					if(modelY > 203 && modelY < 280){
-						if(modelX > 83 && modelX < 337){
+					if(modelY > 203 && modelX < 295){
+						if(modelX > 159 && modelX < 260){
 							showEndResources = true;
 						}
 					}
