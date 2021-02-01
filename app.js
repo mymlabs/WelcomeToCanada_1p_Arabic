@@ -167,9 +167,9 @@
 		endURLs = [
 			["mindyourmind.ca","http://mindyourmind.ca",halfWidth,73],
 			["سبب الحياة - خط منع الانتحار والدعم في مانيتوبا","http://reasontolive.ca/",halfWidth,109],
-			["NorWest Co-op Community Health","https://norwestcoop.ca/",halfWidth,177],
-			["مركز أورورا للعلاج الأسري","http://www.aurorafamilytherapy.com/newcomer.html",halfWidth,220],
-			["خدمات شباب ماكدونالد","https://www.mys.ca/services/youth-crisis-services",halfWidth,265],
+			["NorWest Co-op Community Health","https://norwestcoop.ca/",halfWidth,160],
+			["مركز أورورا للعلاج الأسري","http://www.aurorafamilytherapy.com/newcomer.html",halfWidth,211],
+			["خدمات شباب ماكدونالد","https://www.mys.ca/services/youth-crisis-services",halfWidth,257],
 			["منظمة مجتمع المهاجرين واللاجئين في مانيتوبا (IRCOM)","https://www.ircom.ca/",halfWidth,304],
 			["New Journey Housing","https://www.newjourneyhousing.com/",halfWidth,370],
 			["Klinic Community Health","http://klinic.mb.ca/",halfWidth,414],
